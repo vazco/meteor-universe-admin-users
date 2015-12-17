@@ -31,12 +31,16 @@ export const InsertModal = React.createClass({
             >
                 <Content ref="content">
                     {UniUI.render(this.dualLink(), ({password, ...user}, done) => {
-                        UniUsers.call('universe:admin-users/createUser', user, password, (error) => {
+                        UniUsers.call('universe:admin-users/createUser', user, password, (error, userId) => {
                             done(error);
 
                             if (!error) {
                                 Modals.hide('admin.users.insert');
                                 this.dualLink().clear();
+
+                                if (this.props.onSubmit) {
+                                    this.props.onSubmit(userId);
+                                }
                             }
                         });
                     }, 'edit', {

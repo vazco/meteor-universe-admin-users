@@ -12,6 +12,8 @@ UniUsers.methods({
         }
 
         user.call('universe:admin-users/setPassword', password);
+
+        return user._id;
     }
 });
 

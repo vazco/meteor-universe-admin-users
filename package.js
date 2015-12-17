@@ -1,7 +1,7 @@
 Package.describe({
     name: 'universe:admin-users',
     summary: 'Users manager module for UniCMS admin panel.',
-    version: '0.1.0',
+    version: '0.1.1',
     readme: 'README.md'
 });
 
