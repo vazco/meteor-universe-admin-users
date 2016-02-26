@@ -1,5 +1,5 @@
-import {AdminMenu} from '{universe:admin}';
-import {Modals} from '{universe:ui-react}';
+import AdminMenu from 'meteor/universe:admin';
+import {Modals} from 'meteor/universe:ui-react';
 
 import './lib/UniUsers';
 import './localization/en';

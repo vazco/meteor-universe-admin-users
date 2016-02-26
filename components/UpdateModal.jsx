@@ -1,23 +1,44 @@
-import {UniUI} from '{universe:ui-react-forms}';
-import {DualLinkMixin} from '{universe:utilities-react}';
-import {Actions, Button, Content, Modal, Modals} from '{universe:ui-react}';
+import {UniUI} from 'meteor/universe:ui-react-forms';
+import {DualLinkMixin} from 'meteor/universe:utilities-react';
+import {Actions, Button, Content, Modal, Modals} from 'meteor/universe:ui-react';
 
-export const InsertModal = React.createClass({
-    displayName: 'Admin.Users.Insert',
+export const UpdateModal = React.createClass({
+    displayName: 'Admin.users.Update',
 
     mixins: [DualLinkMixin],
 
     propTypes: {
+        user: React.PropTypes.object,
         modal: React.PropTypes.object.isRequired,
         visible: React.PropTypes.bool.isRequired
     },
 
     componentWillMount () {
-        this.dualLink().setRemote(UniUsers.create());
+        this.dualLink().setRemote(this.props.user);
+    },
+
+    componentWillReceiveProps (props) {
+        this.dualLink().clear();
+        this.dualLink().setRemote(props.user);
     },
 
     render () {
-        const dualLink = this.dualLink();
+        let user = this.props.user;
+
+        if (!user) {
+            // empty modal for fade out
+            return (
+                <Modal className="small basic"
+                       visible={this.props.visible}
+                       modal={{
+                           onHide: this.props.modal.onHide,
+                           selector: {
+                               close: '.actions .close'
+                           }
+                       }}
+                />
+            );
+        }
 
         return (
             <Modal className="small basic"
@@ -30,38 +51,31 @@ export const InsertModal = React.createClass({
                    }}
             >
                 <Content ref="content">
-                    {UniUI.render(this.dualLink(), ({password, ...user}, done) => {
-                        UniUsers.call('universe:admin-users/createUser', user, password, (error, userId) => {
+                    {UniUI.render(this.dualLink(), (user, done) => {
+                        UniUsers.update(this.dualLink().get('_id'), {$set: user}, (error) => {
                             done(error);
 
                             if (!error) {
-                                Modals.hide('admin.users.insert');
-                                this.dualLink().clear();
-
-                                if (this.props.onSubmit) {
-                                    this.props.onSubmit(userId);
-                                }
+                                Modals.hide('admin.users.update');
                             }
                         });
-                    }, 'edit', {
-                        schema: 'password'
-                    })}
+                    }, 'edit')}
                 </Content>
 
                 <Actions>
                     <Button className="basic inverted close">
                         <i className="remove icon"></i>
-                        {i18n('admin.users.actions.close')}
+                        {i18n('common.close')}
                     </Button>
 
                     <Button className="basic inverted red" onClick={this.reset}>
                         <i className="ban icon"></i>
-                        {i18n('admin.users.actions.reset')}
+                        {i18n('common.reset')}
                     </Button>
 
                     <Button className="basic inverted green" onClick={this.submit}>
                         <i className="checkmark icon"></i>
-                        {i18n('admin.users.actions.save')}
+                        {i18n('common.save')}
                     </Button>
                 </Actions>
             </Modal>
@@ -78,9 +92,9 @@ export const InsertModal = React.createClass({
     }
 });
 
-export default InsertModal;
+export default UpdateModal;
 
 Modals.register({
-    name: 'admin.users.insert',
-    component: InsertModal
+    name: 'admin.users.update',
+    component: UpdateModal
 });

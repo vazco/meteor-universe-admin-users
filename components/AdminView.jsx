@@ -1,5 +1,5 @@
-import {Button, Icon, Modals} from '{universe:ui-react}';
-import {AutorunMixin, SubscriptionMixin} from '{universe:utilities-react}';
+import {Button, Icon, Modals} from 'meteor/universe:ui-react';
+import {AutorunMixin, SubscriptionMixin} from 'meteor/universe:utilities-react';
 
 
 export const AdminView = React.createClass({
