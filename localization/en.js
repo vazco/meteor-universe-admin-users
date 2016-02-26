@@ -1,4 +1,6 @@
-i18n.map('en', {
+import {_i18n as i18n} from "meteor/universe:i18n";
+
+i18n.addTranslation('en', {
     admin: {
         users: {
             actions: {
