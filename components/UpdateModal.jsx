@@ -2,6 +2,7 @@ import {UniUI} from 'meteor/universe:ui-react-forms';
 import {DualLinkMixin} from 'meteor/universe:utilities-react';
 import {Actions, Button, Content, Modal, Modals} from 'meteor/universe:ui-react';
 import React from 'react';
+import {findDOMNode} from 'react-dom';
 import {_i18n as i18n} from "meteor/universe:i18n";
 
 export const UpdateModal = React.createClass({
@@ -67,17 +68,17 @@ export const UpdateModal = React.createClass({
                 <Actions>
                     <Button className="basic inverted close">
                         <i className="remove icon"></i>
-                        {i18n.__('common.close')}
+                        {i18n.__('admin.users.actions.close')}
                     </Button>
 
                     <Button className="basic inverted red" onClick={this.reset}>
                         <i className="ban icon"></i>
-                        {i18n.__('common.reset')}
+                        {i18n.__('admin.users.actions.reset')}
                     </Button>
 
                     <Button className="basic inverted green" onClick={this.submit}>
                         <i className="checkmark icon"></i>
-                        {i18n.__('common.save')}
+                        {i18n.__('admin.users.actions.save')}
                     </Button>
                 </Actions>
             </Modal>
@@ -86,11 +87,11 @@ export const UpdateModal = React.createClass({
 
     reset () {
         this.dualLink().clear();
-        $('.ui.form', ReactDOM.findDOMNode(this.refs.content)).form('reset').form('add errors', []);
+        $('.ui.form', findDOMNode(this.refs.content)).form('reset').form('add errors', []);
     },
 
     submit () {
-        $('.ui.form', ReactDOM.findDOMNode(this.refs.content)).form('submit');
+        $('.ui.form', findDOMNode(this.refs.content)).form('submit');
     }
 });
 

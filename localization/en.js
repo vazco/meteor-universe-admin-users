@@ -10,8 +10,8 @@ i18n.addTranslation('en', {
                 close: 'Close',
                 reset: 'Reset',
 
-                remove:   'Remove user {$1}?',
-                password: 'Send reset password email to {$1}?'
+                remove:   'Remove user {$name}?',
+                password: 'Send reset password email to {$name}?'
             },
 
             fields: {

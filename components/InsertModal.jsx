@@ -2,6 +2,7 @@ import {UniUI} from 'meteor/universe:ui-react-forms';
 import {DualLinkMixin} from 'meteor/universe:utilities-react';
 import {Actions, Button, Content, Modal, Modals} from 'meteor/universe:ui-react';
 import React from 'react';
+import {findDOMNode} from 'react-dom';
 import {_i18n as i18n} from "meteor/universe:i18n";
 
 export const InsertModal = React.createClass({
@@ -72,11 +73,11 @@ export const InsertModal = React.createClass({
 
     reset () {
         this.dualLink().clear();
-        $('.ui.form', ReactDOM.findDOMNode(this.refs.content)).form('reset').form('add errors', []);
+        $('.ui.form', findDOMNode(this.refs.content)).form('reset').form('add errors', []);
     },
 
     submit () {
-        $('.ui.form', ReactDOM.findDOMNode(this.refs.content)).form('submit');
+        $('.ui.form', findDOMNode(this.refs.content)).form('submit');
     }
 });
 

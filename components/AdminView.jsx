@@ -1,6 +1,7 @@
 import {Button, Icon, Modals} from 'meteor/universe:ui-react';
 import {AutorunMixin, SubscriptionMixin} from 'meteor/universe:utilities-react';
 import React from 'react';
+import {_i18n as i18n} from "meteor/universe:i18n";
 
 export const AdminView = React.createClass({
     displayName: 'Admin.Users.View',
@@ -16,7 +17,7 @@ export const AdminView = React.createClass({
 
     render () {
         return (
-            <div>
+            <div className="test-class">
                 <table className="ui striped table">
                     <thead>
                         <tr>
@@ -61,7 +62,7 @@ export const AdminView = React.createClass({
         const user = UniUsers.findOne(id);
 
         Modals.show('ask', {
-            message: _i18n.__('admin.users.actions.remove', user.getName()),
+            message: i18n.__('admin.users.actions.remove', {name: user.getName()}),
 
             yesAction () {
                 user.remove();
@@ -73,7 +74,7 @@ export const AdminView = React.createClass({
         const user = UniUsers.findOne(id);
 
         Modals.show('ask', {
-            message: _i18n.__('admin.users.actions.password', user.getName()),
+            message: i18n.__('admin.users.actions.password', {name: user.getName()}),
 
             yesAction () {
                 user.call('universe:admin-users/resetPassword', user._id);
