@@ -22,19 +22,6 @@ Package.onUse(function (api) {
         'universe:utilities-react@1.0.0-beta1'
     ]);
 
-
-    api.addFiles([
-        'index.jsx',
-
-        'lib/UniUsers.js',
-
-        'localization/en.js',
-
-        'components/AdminView.jsx',
-        'components/InsertModal.jsx',
-        'components/UpdateModal.jsx'
-    ]);
-
     api.addFiles([
         'server/methods.js',
         'server/publications.js'
