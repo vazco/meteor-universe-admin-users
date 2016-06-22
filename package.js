@@ -11,31 +11,24 @@ Package.onUse(function (api) {
     api.use([
         'accounts-base',
         'accounts-password',
-
-        'universe:admin@0.1.0',
+        'universe:admin@0.1.1',
         'universe:collection@2.0.6',
         'universe:i18n@1.2.2',
-        'universe:modules@0.6.7',
         'universe:ui-react@0.1.0',
         'universe:ui-react-forms@0.1.0',
-        'universe:utilities-react@0.5.6'
+        'universe:utilities-react',
+        'ecmascript'
     ]);
 
 
     api.addFiles([
-        'index.import.jsx',
-
-        'lib/UniUsers.import.js',
-
-        'localization/en.import.js',
-
-        'components/AdminView.import.jsx',
-        'components/InsertModal.import.jsx',
-        'components/UpdateModal.import.jsx'
+        'lib/UniUsers.js'
     ]);
 
     api.addFiles([
         'server/methods.js',
         'server/publications.js'
     ], ['server']);
+
+    api.mainModule('index.js');
 });

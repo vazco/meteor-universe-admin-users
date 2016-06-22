@@ -1,6 +1,6 @@
-import {AdminMenu} from '{universe:admin}';
-import {Modals} from '{universe:ui-react}';
-
+import {AdminMenu} from 'meteor/universe:admin';
+import {Modals} from 'meteor/universe:ui-react';
+import React from 'react';
 import './lib/UniUsers';
 import './localization/en';
 
@@ -18,8 +18,10 @@ AdminMenu.add({
     view: <AdminView />,
 
     items: [
-        {text: i18n('admin.users.actions.add'), type: 'link', icon: 'plus', action: () => {
+        {text: 'aaaaaa', type: 'link', icon: 'plus', action: () => {
             Modals.show('admin.users.insert');
         }}
     ]
 });
+
+export default AdminMenu;

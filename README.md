@@ -5,5 +5,5 @@
 ### Attaching universe:admin-users
 ```js
 // This will create menu group in universe:admin
-import '{universe:admin-users}';
+import 'meteor/universe:admin-users';
 ```

@@ -1,5 +1,6 @@
-import {Button, Icon, Modals} from '{universe:ui-react}';
-import {AutorunMixin, SubscriptionMixin} from '{universe:utilities-react}';
+import {Button, Icon, Modals} from 'meteor/universe:ui-react';
+import {AutorunMixin, SubscriptionMixin} from 'meteor/universe:utilities-react';
+import React from 'react';
 
 
 export const AdminView = React.createClass({
@@ -20,9 +21,9 @@ export const AdminView = React.createClass({
                 <table className="ui striped table">
                     <thead>
                         <tr>
-                            <th>{i18n('admin.users.fields.username')}</th>
-                            <th>{i18n('admin.users.fields.fullname')}</th>
-                            <th>{i18n('admin.users.fields.email')}</th>
+                            <th>{i18n.__('admin.users.fields.username')}</th>
+                            <th>{i18n.__('admin.users.fields.fullname')}</th>
+                            <th>{i18n.__('admin.users.fields.email')}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -61,7 +62,7 @@ export const AdminView = React.createClass({
         const user = UniUsers.findOne(id);
 
         Modals.show('ask', {
-            message: i18n('admin.users.actions.remove', user.getName()),
+            message: i18n.__('admin.users.actions.remove', user.getName()),
 
             yesAction () {
                 user.remove();
@@ -73,7 +74,7 @@ export const AdminView = React.createClass({
         const user = UniUsers.findOne(id);
 
         Modals.show('ask', {
-            message: i18n('admin.users.actions.password', user.getName()),
+            message: i18n.__('admin.users.actions.password', user.getName()),
 
             yesAction () {
                 user.call('universe:admin-users/resetPassword', user._id);

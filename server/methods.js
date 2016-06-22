@@ -8,7 +8,7 @@ UniUsers.methods({
         try {
             user = UniUsers.create(userRaw, true);
         } catch (e) {
-            throw new Meteor.Error(400, i18n('admin.users.errors.userExists'));
+            throw new Meteor.Error(400, i18n.__('admin.users.errors.userExists'));
         }
 
         user.call('universe:admin-users/setPassword', password);

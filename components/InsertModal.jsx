@@ -1,6 +1,8 @@
-import {UniUI} from '{universe:ui-react-forms}';
-import {DualLinkMixin} from '{universe:utilities-react}';
-import {Actions, Button, Content, Modal, Modals} from '{universe:ui-react}';
+import {UniUI} from 'meteor/universe:ui-react-forms';
+import {DualLinkMixin} from 'meteor/universe:utilities-react';
+import {Actions, Button, Content, Modal, Modals} from 'meteor/universe:ui-react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 export const InsertModal = React.createClass({
     displayName: 'Admin.Users.Insert',
@@ -51,17 +53,17 @@ export const InsertModal = React.createClass({
                 <Actions>
                     <Button className="basic inverted close">
                         <i className="remove icon"></i>
-                        {i18n('admin.users.actions.close')}
+                        {i18n.__('admin.users.actions.close')}
                     </Button>
 
                     <Button className="basic inverted red" onClick={this.reset}>
                         <i className="ban icon"></i>
-                        {i18n('admin.users.actions.reset')}
+                        {i18n.__('admin.users.actions.reset')}
                     </Button>
 
                     <Button className="basic inverted green" onClick={this.submit}>
                         <i className="checkmark icon"></i>
-                        {i18n('admin.users.actions.save')}
+                        {i18n.__('admin.users.actions.save')}
                     </Button>
                 </Actions>
             </Modal>
