@@ -2,6 +2,7 @@ import {UniUI} from 'meteor/universe:ui-react-forms';
 import {DualLinkMixin} from 'meteor/universe:utilities-react';
 import {Actions, Button, Content, Modal, Modals} from 'meteor/universe:ui-react';
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 export const UpdateModal = React.createClass({
     displayName: 'Admin.users.Update',
