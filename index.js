@@ -9,19 +9,25 @@ import './components/UpdateModal';
 
 import AdminView from './components/AdminView';
 
-AdminMenu.add({
-    icon: 'users',
-    link: '/admin/users',
-    text: 'Users',
-    type: 'menu',
+const defaultButtons = [
+    {text: i18n.__('admin.users.actions.add'), type: 'link', icon: 'plus', action: () => {
+        Modals.show('admin.users.insert');
+    }}
+];
 
-    view: <AdminView />,
+export default function attachToAdminMenu (children, items = defaultButtons) {
+    AdminMenu.add({
+        icon: 'users',
+        link: '/admin/users',
+        text: 'Users',
+        type: 'menu',
 
-    items: [
-        {text: 'aaaaaa', type: 'link', icon: 'plus', action: () => {
-            Modals.show('admin.users.insert');
-        }}
-    ]
-});
+        view: (
+            <AdminView>
+                {children}
+            </AdminView>
+        ),
 
-export default AdminMenu;
+        items
+    });
+};

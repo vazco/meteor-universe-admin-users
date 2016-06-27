@@ -18,6 +18,7 @@ export const AdminView = React.createClass({
     render () {
         return (
             <div>
+                {this.props.children}
                 <table className="ui striped table">
                     <thead>
                         <tr>
