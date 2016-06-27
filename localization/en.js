@@ -1,5 +1,4 @@
-import i18n from 'meteor/universe:i18n';
-
+'use strict';
 i18n.addTranslations('en-US', {
     admin: {
         users: {
@@ -26,4 +25,8 @@ i18n.addTranslations('en-US', {
             }
         }
     }
+});
+
+i18n.setOptions({
+    hideMissing: false
 });
