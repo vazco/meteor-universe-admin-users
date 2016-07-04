@@ -83,6 +83,7 @@ export const InsertModal = React.createClass({
 export default InsertModal;
 
 Modals.register({
-    name: 'admin.users.insert',
+    name: '' +
+    'admin.users.insert',
     component: InsertModal
 });

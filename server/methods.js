@@ -4,7 +4,7 @@
 UniUsers.methods({
     'universe:admin-users/createUser': function (userRaw, password) {
         var user;
-
+        userRaw.profile.name = userRaw.profile.firstName + ' ' + userRaw.profile.lastName;
         try {
             user = UniUsers.create(userRaw, true);
         } catch (e) {
@@ -31,6 +31,7 @@ UniUsers.docMethods({
 UniUsers.allow({
     //access for remote methods
     'universe:admin-users/createUser': function (userId, document, args) {
+        args[0].profile.name = args[0].profile.firstName + ' ' + args[0].profile.lastName;
         check(args, Match.Where(function (x) {
             return x.length > 1;
         }));
